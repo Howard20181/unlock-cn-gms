@@ -1,4 +1,5 @@
 # Unlock CN GMS
+
 The GMS is restricted in China on some devices, because of a configuration file located in `/system/etc/permissions/services.cn.google.xml`.
 by this restriction, you can not enable `Google Location History` and the `Google Map Timeline` function can not use either.
 
@@ -11,10 +12,15 @@ This module removes the restriction by replacing this configuration file.
 
  ```xml
  <feature name="cn.google.services" />
- ``` 
+ <feature name="com.google.android.feature.services_updater" />
+ ```
+
  以此来实现去除国行 GMS 的限制。
 
- **注意**：为了开启 `Google Location History` 服务，你可能还需要配合其他模块   
+ **注意**：为了开启 `Google Location History` 服务，你可能还需要配合其他模块
+
  例如
- Magisk 模块: [Riru - Location Report Enabler](https://github.com/RikkaApps/Riru-LocationReportEnabler)     
- 或者 Xposed 模块 [LocationReportEnabler](https://github.com/GhostFlying/LocationReportEnabler)
+
+ ~~Magisk 模块: [Riru - Location Report Enabler](https://github.com/RikkaApps/Riru-LocationReportEnabler)~~
+
+ Xposed 模块 [LocationReportEnabler](https://github.com/GhostFlying/LocationReportEnabler)
