@@ -18,9 +18,9 @@ for ROOT in $ROOT_LIST; do
             PERMISSION_PATH="$MODPATH$ROOT"
             FILE_NAME=$FILE
             ui_print "- PATH $ROOT/$FILE_NAME"
-            if [ "$KSU" ]; then
+            if [ "$KSU" ] && { [ "$ROOT" != "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" ] || [ "$ROOT" != "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH" ]; }; then
                 REMOVE="$REMOVE $ROOT/$FILE_NAME"
-            else # Magisk
+            else
                 mkdir -p "$PERMISSION_PATH"
                 cat >"$PERMISSION_PATH/$FILE_NAME" <<EOF
 <?xml version="1.0" encoding="utf-8"?>
@@ -35,7 +35,7 @@ EOF
                     fi
                     echo "mount -o ro,bind \$MODDIR$ROOT/$FILE_NAME $ROOT/$FILE_NAME" >>"$MODPATH/post-fs-data.sh"
                 }
-            fi # End Magisk
+            fi # End else
         fi
     done
 done
